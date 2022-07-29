@@ -11,7 +11,7 @@ const disqusConfig = (title, siteUrl, slug) => ({
   title: title,
 });
 
-const BlogPostPage = ({ data: { markdownRemark: post, site } }) => (
+const BlogPostTemplatePage = ({ data: { markdownRemark: post, site } }) => (
   <div className="max-w-7xl">
     <h1 className="text-5xl text-center font-extrabold mt-10">
       {post.frontmatter.title}
@@ -47,10 +47,10 @@ export const Head = ({ data: { markdownRemark: post } }) => (
   />
 );
 
-export default BlogPostPage;
+export default BlogPostTemplatePage;
 
-export const blogPostPageQuery = graphql`
-  query BlogPostBySlug($id: String!) {
+export const getPostById = graphql`
+  query GetPostById($id: String!) {
     site {
       siteMetadata {
         title

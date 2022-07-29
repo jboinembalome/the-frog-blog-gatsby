@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import Blog from "../components/blog/Blog";
 import Seo from "../components/shared/Seo";
 
-const TagRoute = ({
+const TagTemplatePage = ({
   data: { allMarkdownRemark: { edges: posts } },
   pageContext: { tag }
 }) => (
@@ -18,10 +18,10 @@ const TagRoute = ({
 
 export const Head = ({ pageContext }) => <Seo title={pageContext.tag} />;
 
-export default TagRoute;
+export default TagTemplatePage;
 
-export const tagPageQuery = graphql`
-  query TagPage($tag: String) {
+export const getPostsContainsTag = graphql`
+  query GetPostsContainsTag($tag: String) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

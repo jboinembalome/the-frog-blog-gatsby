@@ -5,14 +5,13 @@ import Blog from "../components/blog/Blog";
 import SearchBlogs from "../components/blog/SearchBlogs";
 import PageButtons from "../components/shared/PageButtons";
 
-const BlogPage = ({
+const BlogTemplatePage = ({
   data: { allMarkdownRemark: { edges: posts } },
   pageContext
 }) => (
   <>
     <h1 className="text-center text-5xl font-extrabold mt-8">Blog</h1>
 
-    {/* ADD SEARCH BAR HERE */}
     <SearchBlogs />
 
     {posts &&
@@ -26,10 +25,10 @@ const BlogPage = ({
 
 export const Head = () => <Seo title="Blog" />;
 
-export default BlogPage;
+export default BlogTemplatePage;
 
-export const blogPageQuery = graphql`
-  query BlogPageQuery($skip: Int!, $limit: Int!) {
+export const getBlogsWithPaginationQuery = graphql`
+  query GetBlogsWithPaginationQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: $limit

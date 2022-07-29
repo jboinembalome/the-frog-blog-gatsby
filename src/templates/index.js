@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import Seo from "../components/shared/Seo";
 import MostRecentBlogs from "../components/blog/MostRecentBlogs";
 
-const IndexPage = ({ data: { markdownRemark: home, site } }) => (
+const IndexTemplatePage = ({ data: { markdownRemark: home, site } }) => (
   <>
     <h1 className="text-5xl font-extrabold text-center mt-3">
       {site.siteMetadata.title}
@@ -33,10 +33,10 @@ const IndexPage = ({ data: { markdownRemark: home, site } }) => (
 
 export const Head = () => <Seo />;
 
-export default IndexPage;
+export default IndexTemplatePage;
 
-export const indexPageQuery = graphql`
-  query IndexPageTemplate {
+export const getHomeDataQuery = graphql`
+  query GetHomeDataQuery {
     site {
       siteMetadata {
         title
