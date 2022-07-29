@@ -6,7 +6,7 @@ const BlogWithIcon = ({ title, slug }) => (
   <Link to={slug}>
     <div className="flex items-center font-bold">
       <span className="p-1">{title}</span>
-      <FaReadmeIcon className="h-5 w-5"/>
+      <FaReadmeIcon className="h-5 w-5" />
     </div>
   </Link>
 );
@@ -72,6 +72,7 @@ const SearchBlogs = () => {
         filteredPosts: [],
         query: "",
       });
+      searchInput.current.value = "";
       searchInput.current.blur();
     }
   };
@@ -99,12 +100,10 @@ const SearchBlogs = () => {
         onKeyUp={onSearchInputKeyUp}
       />
       <hr />
-      {posts && state.filteredPosts && (
-        <>
-          <p className="px-2 py-2 text-black">Press 'ESC' to cancel search.</p>
-          <SearchResults posts={state.filteredPosts} />
-        </>
+      {state.query && (
+        <p className="px-2 py-2 text-black font-bold">Press 'ESC' to cancel search.</p>
       )}
+      {state.filteredPosts && <SearchResults posts={state.filteredPosts} />}
     </div>
   );
 };
