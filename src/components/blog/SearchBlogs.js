@@ -24,8 +24,8 @@ const SearchResults = ({ posts }) => (
 const getAllBlogsQuery = graphql`
   query {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
     ) {
       edges {
         node {

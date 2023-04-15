@@ -27,8 +27,8 @@ export default TagTemplatePage;
 export const getPostsContainsTag = graphql`
   query GetPostsContainsTag($tag: String) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {tags: {in: [$tag]}}}
     ) {
       edges {
         node {

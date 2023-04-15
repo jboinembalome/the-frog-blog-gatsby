@@ -30,10 +30,10 @@ export default BlogTemplatePage;
 export const getBlogsWithPaginationQuery = graphql`
   query GetBlogsWithPaginationQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: {frontmatter: {date: DESC}}
       limit: $limit
       skip: $skip
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+      filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
     ) {
       edges {
         node {
